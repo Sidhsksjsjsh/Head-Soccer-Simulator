@@ -294,15 +294,38 @@ T1:Toggle("Auto spin",false,function(value)
     end
 end)
 
---[[
 T1:Toggle("Auto rebirth",false,function(value)
     tog.reb = value
     while wait() do
       if tog.reb == false then break end
-      
+      game:GetService("ReplicatedStorage")["CurrentGame"]["Stats"]["Rebirths"]["Rebirths_m"]["RebirthUsingTrophies"]:InvokeServer()
     end
 end)
-]]
+
+T1:Toggle("Auto claim eggs",false,function(value)
+    tog.gifts = value
+    while wait() do
+      if tog.gifts == false then break end
+      game:GetService("ReplicatedStorage")["CurrentGame"]["UI"]["Store"]["FreeStoreGift"]["FreeStoreGift_m"]["ClaimFreeReward"]:InvokeServer()
+    end
+end)
+
+T1:Toggle("Auto claim index reward",false,function(value)
+    tog.index = value
+    while wait() do
+      if tog.index == false then break end
+      game:GetService("ReplicatedStorage")["CurrentGame"]["Lobby"]["Index"]["Index_m"]["ClaimNextReward"]:InvokeServer()
+    end
+end)
+
+T1:Toggle("Auto equip best pet",false,function(value)
+    tog.best = value
+    while wait() do
+      if tog.best == false then break end
+      game:GetService("ReplicatedStorage")["CurrentGame"]["Pets"]["Equipping"]["PetEquipping_m"]["EquipBestPets"]:InvokeServer()
+    end
+end)
+
 T3:Textbox("Insert enemies name",false,function(value)
     tog.boss.name = value
 end)
